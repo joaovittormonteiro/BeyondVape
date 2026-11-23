@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BeyondVape — Product Vision & Scope</title>
+<meta name="description" content="Documentação completa do BeyondVape — rede social de apoio à redução e cessação do uso de vape.">
+<style>
+:root{
+  --bg:#07090d;
+  --panel:#0d1118;
+  --panel2:#111722;
+  --border:#1d2735;
+  --text:#edf4ff;
+  --muted:#8d9aab;
+  --blue:#1683ff;
+  --blue2:#42a5ff;
+  --cyan:#55d8ff;
+  --green:#4ade80;
+  --danger:#ff5d73;
+  --yellow:#ffd166;
+  --shadow:0 20px 60px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 80% 0%,rgba(22,131,255,.12),transparent 28%),
+    radial-gradient(circle at 10% 20%,rgba(85,216,255,.06),transparent 25%),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.65;
+}
+a{color:inherit;text-decoration:none}
+.container{width:min(1180px,92%);margin:auto}
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:rgba(7,9,13,.78);backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.5px}
+.brand-mark{
+  width:36px;height:36px;border-radius:11px;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,#0d5fd7,#28a7ff);
+  box-shadow:0 8px 25px rgba(22,131,255,.3);
+  font-weight:900;
+}
+.navlinks{display:flex;gap:18px;flex-wrap:wrap}
+.navlinks a{font-size:13px;color:var(--muted)}
+.navlinks a:hover{color:white}
+.hero{padding:100px 0 80px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(66,165,255,.25);
+  background:rgba(22,131,255,.08);
+  color:#7fc4ff;padding:7px 12px;border-radius:999px;
+  font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.4px;
+}
+.hero h1{font-size:clamp(48px,8vw,92px);line-height:.95;letter-spacing:-5px;margin:24px 0 22px;max-width:900px}
+.gradient{background:linear-gradient(90deg,#fff 15%,#51b3ff 65%,#147cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:760px;font-size:20px;color:var(--muted);margin:0}
+.hero-actions{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{padding:12px 17px;border-radius:12px;border:1px solid var(--border);font-weight:700;font-size:14px}
+.btn.primary{background:linear-gradient(135deg,#0968e5,#159cff);border:none}
+.btn.secondary{background:var(--panel)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:55px}
+.stat{padding:22px;border:1px solid var(--border);border-radius:16px;background:rgba(13,17,24,.7)}
+.stat strong{display:block;font-size:25px}.stat span{font-size:12px;color:var(--muted)}
+section{padding:72px 0;border-top:1px solid rgba(255,255,255,.05)}
+.section-head{margin-bottom:32px}
+.kicker{font-size:11px;color:#5caeff;font-weight:800;text-transform:uppercase;letter-spacing:2px}
+h2{font-size:clamp(30px,4vw,48px);line-height:1.08;letter-spacing:-2px;margin:8px 0 12px}
+h3{margin:0 0 8px;font-size:20px}
+.lead{color:var(--muted);max-width:800px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{
+  background:linear-gradient(180deg,rgba(17,23,34,.92),rgba(10,14,20,.92));
+  border:1px solid var(--border);border-radius:18px;padding:23px;
+  box-shadow:var(--shadow);
+}
+.card p,.card li{color:#aab5c4;font-size:14px}
+.card ul{padding-left:18px}
+.icon{font-size:24px;margin-bottom:12px}
+.callout{
+  border:1px solid rgba(66,165,255,.25);
+  background:linear-gradient(135deg,rgba(22,131,255,.1),rgba(22,131,255,.02));
+  border-radius:20px;padding:25px;margin:25px 0;
+}
+.callout strong{color:#83c8ff}
+.pill{display:inline-block;border:1px solid var(--border);border-radius:999px;padding:5px 9px;margin:3px;color:#b9c5d4;font-size:12px}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:9px}
+.flow span{padding:10px 13px;background:var(--panel2);border:1px solid var(--border);border-radius:10px;font-size:13px}
+.flow b{color:var(--blue2)}
+pre{
+  background:#05070a;border:1px solid var(--border);border-radius:15px;
+  padding:20px;overflow:auto;color:#cfe5ff;font-size:13px;
+}
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+th,td{text-align:left;padding:13px 15px;border-bottom:1px solid var(--border);font-size:13px}
+th{color:#dcecff;background:#101722}td{color:#aeb9c8}
+.badge{font-size:11px;padding:4px 8px;border-radius:7px;background:rgba(74,222,128,.1);color:var(--green)}
+.warning{color:#ff9aaa}
+.timeline{border-left:2px solid #1e75cf;padding-left:25px}
+.timeline-item{position:relative;margin:0 0 30px}
+.timeline-item:before{content:"";position:absolute;left:-33px;top:6px;width:12px;height:12px;border-radius:50%;background:#1683ff;box-shadow:0 0 0 5px rgba(22,131,255,.1)}
+.checklist{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.check{padding:11px 13px;border:1px solid var(--border);border-radius:10px;background:rgba(255,255,255,.015);font-size:13px;color:#b8c3d0}
+.check:before{content:"✓";color:var(--green);font-weight:900;margin-right:8px}
+footer{padding:60px 0 90px;text-align:center;color:var(--muted);font-size:13px}
+@media(max-width:850px){
+ .stats,.grid,.grid2{grid-template-columns:1fr 1fr}
+ .navlinks{display:none}.hero h1{letter-spacing:-3px}
+}
+@media(max-width:560px){
+ .stats,.grid,.grid2,.checklist{grid-template-columns:1fr}
+ .hero{padding-top:70px}.hero p{font-size:17px}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="#top"><span class="brand-mark">B</span>BeyondVape</a>
+    <nav class="navlinks">
+      <a href="#visao">Visão</a>
+      <a href="#ciencia">Ciência</a>
+      <a href="#produto">Produto</a>
+      <a href="#mvp">MVP</a>
+      <a href="#tech">Tecnologia</a>
+      <a href="#dados">Dados</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">Product Vision • Social Health • Behavior Change</span>
+    <h1>Beyond<span class="gradient">Vape</span></h1>
+    <p><strong>Você não precisa vencer sozinho.</strong><br>
+    Uma rede social de apoio à redução e cessação do uso de vape, combinando acompanhamento comportamental, comunidade, educação, gamificação e suporte personalizado.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#mvp">Ver escopo do MVP</a>
+      <a class="btn secondary" href="#tech">Ver arquitetura</a>
+      <a class="btn secondary" href="jornada.html">Abrir a jornada atual</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>01</strong><span>Produto focado em mudança de comportamento</span></div>
+      <div class="stat"><strong>02</strong><span>Comunidade como mecanismo de suporte</span></div>
+      <div class="stat"><strong>03</strong><span>Dados para personalização e pesquisa futura</span></div>
+      <div class="stat"><strong>100%</strong><span>Web-app com JavaScript, HTML e CSS</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="visao">
+<div class="container">
+  <div class="section-head"><span class="kicker">01 — Visão</span><h2>Não é apenas uma rede social.</h2><p class="lead">O BeyondVape deve funcionar como uma jornada digital de mudança de comportamento: identificar gatilhos, enfrentar vontades, registrar progresso, receber apoio e transformar recaídas em aprendizado.</p></div>
+  <div class="grid">
+    <div class="card"><div class="icon">🎯</div><h3>Problema</h3><p>Pessoas que querem reduzir ou abandonar o vape podem ter dificuldade para reconhecer gatilhos, lidar com cravings, manter motivação e encontrar suporte social.</p></div>
+    <div class="card"><div class="icon">🧠</div><h3>Proposta</h3><p>Unir ferramentas de acompanhamento comportamental a uma comunidade segura e anônima, com intervenções rápidas no momento em que a vontade aparece.</p></div>
+    <div class="card"><div class="icon">🌎</div><h3>Visão de futuro</h3><p>Construir uma comunidade digital onde sair do vape seja uma jornada compartilhada, mensurável e personalizada.</p></div>
+  </div>
+  <div class="callout"><strong>Posicionamento:</strong> BeyondVape não é sobre o vape. É sobre a vida depois dele.</div>
+</div>
+</section>
+
+<section id="ciencia">
+<div class="container">
+  <div class="section-head"><span class="kicker">02 — Ciência</span><h2>Produto orientado por evidências.</h2><p class="lead">A evidência específica para cessação de vaping ainda é menor do que a existente para cigarro convencional. Por isso, o produto deve comunicar seus limites e utilizar evidências como base de design — não como promessa de cura.</p></div>
+  <div class="grid2">
+    <div class="card"><h3>🧪 Intervenções digitais</h3><p>Diretrizes da OMS reconhecem intervenções digitais — incluindo aplicativos, mensagens e ferramentas online — como opções que podem complementar suporte comportamental e autogerenciamento.</p></div>
+    <div class="card"><h3>🤝 Peer support</h3><p>O suporte entre pares é uma linha de pesquisa relevante para cessação. No BeyondVape, a comunidade não é um recurso decorativo: ela participa do mecanismo de apoio.</p></div>
+    <div class="card"><h3>🧠 ACT</h3><p>Um ensaio clínico randomizado com 2.415 adultos comparou um app baseado em Acceptance and Commitment Therapy (ACT) a um app baseado em diretrizes clínicas e encontrou maior chance de cessação no grupo ACT no acompanhamento de 12 meses.</p></div>
+    <div class="card"><h3>📱 ACT + vaping</h3><p>Um estudo piloto recente específico para vaping avaliou ACT por aplicativo combinado a mensagens em jovens adultos. Os resultados são promissores, mas o tamanho da amostra é pequeno e não permite tratar a abordagem como eficácia definitiva.</p></div>
+  </div>
+  <div class="callout"><strong>Princípio:</strong> a pessoa não precisa esperar a vontade desaparecer para conseguir não usar. O produto pode ajudá-la a observar, tolerar, atravessar e aprender com o craving.</div>
+  <div class="card">
+    <h3>Fontes científicas prioritárias para a documentação</h3>
+    <ul>
+      <li>OMS — guideline sobre cessação de tabaco e intervenções comportamentais/digitais.</li>
+      <li>Revisões sistemáticas sobre intervenções digitais para cessação de vaping.</li>
+      <li>Revisões sistemáticas sobre intervenções de peer support.</li>
+      <li>Ensaios clínicos envolvendo ACT e cessação.</li>
+      <li>Estudos específicos sobre vaping em adolescentes e jovens adultos.</li>
+    </ul>
+    <p class="warning">Importante: antes de publicar alegações de eficácia, as fontes devem ser revisadas por profissional qualificado e atualizadas conforme novas evidências.</p>
+  </div>
+</div>
+</section>
+
+<section id="produto">
+<div class="container">
+  <div class="section-head"><span class="kicker">03 — Produto</span><h2>O ecossistema BeyondVape.</h2></div>
+  <div class="grid">
+    <div class="card"><div class="icon">🧭</div><h3>Onboarding inteligente</h3><p>Objetivo, frequência de uso, contexto, gatilhos, horários críticos e estágio atual da jornada.</p></div>
+    <div class="card"><div class="icon">🔥</div><h3>Estou com vontade</h3><p>Botão de acesso imediato a um protocolo de craving com intensidade antes/depois, gatilho, estratégia e resultado.</p></div>
+    <div class="card"><div class="icon">📈</div><h3>Jornada</h3><p>Contador, progresso, check-ins, dinheiro economizado, vontades enfrentadas e histórico.</p></div>
+    <div class="card"><div class="icon">📱</div><h3>Feed social</h3><p>Posts de diário, conquistas, pedidos de ajuda, dicas e progresso.</p></div>
+    <div class="card"><div class="icon">🆘</div><h3>Preciso de ajuda</h3><p>Permite solicitar apoio da comunidade durante uma vontade ou momento difícil.</p></div>
+    <div class="card"><div class="icon">🏆</div><h3>Gamificação</h3><p>Desafios, badges, marcos, conquistas e reconhecimento por apoiar outras pessoas.</p></div>
+    <div class="card"><div class="icon">👥</div><h3>Grupos</h3><p>Comunidades por objetivo, gatilho, rotina e contexto: ansiedade, academia, estudantes, gamers, primeira semana etc.</p></div>
+    <div class="card"><div class="icon">💬</div><h3>Mensagens</h3><p>Conversas privadas com bloqueio, denúncia, silenciamento e proteção contra spam.</p></div>
+    <div class="card"><div class="icon">📚</div><h3>Biblioteca científica</h3><p>Conteúdos educativos sobre dependência, cravings, sono, ansiedade, exercício e estratégias comportamentais.</p></div>
+    <div class="card"><div class="icon">🤖</div><h3>BeyondAI — V2</h3><p>Assistente comportamental para check-ins e intervenções. Não diagnostica, não prescreve e não substitui profissionais.</p></div>
+    <div class="card"><div class="icon">💰</div><h3>Calculadora financeira</h3><p>Estima gastos evitados e mostra o potencial de economia ao longo de semanas, meses e anos.</p></div>
+    <div class="card"><div class="icon">🔒</div><h3>Anonimato</h3><p>Perfil anônimo opcional, controles de visibilidade e coleta mínima de dados.</p></div>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="container">
+  <div class="section-head"><span class="kicker">04 — Core Loop</span><h2>O ciclo que sustenta o produto.</h2></div>
+  <div class="flow">
+    <span>Registrar estado</span><b>→</b>
+    <span>Identificar gatilho</span><b>→</b>
+    <span>Enfrentar craving</span><b>→</b>
+    <span>Registrar resultado</span><b>→</b>
+    <span>Receber apoio</span><b>→</b>
+    <span>Aprender</span><b>→</b>
+    <span>Repetir</span>
+  </div>
+  <div class="grid2" style="margin-top:22px">
+    <div class="card"><h3>Craving protocol</h3><p>Intensidade 0–10 → gatilho → intervenção → reavaliação → registro do resultado.</p><pre>ANTES
+████████░░ 8/10
+
+INTERVENÇÃO
+respiração • água • caminhada • apoio
+
+DEPOIS
+███░░░░░░░ 3/10</pre></div>
+    <div class="card"><h3>Recaída sem “zerar a pessoa”</h3><p>Uma recaída deve ser registrada como evento de aprendizado. A sequência pode reiniciar, mas o histórico total continua preservado.</p><pre>RECAÍDA
+      ↓
+Identificar contexto
+      ↓
+Entender gatilho
+      ↓
+Planejar resposta
+      ↓
+Continuar jornada</pre></div>
+  </div>
+</div>
+</section>
+
+<section id="mvp">
+<div class="container">
+  <div class="section-head"><span class="kicker">05 — MVP</span><h2>Escopo da primeira versão.</h2><p class="lead">A primeira versão precisa provar o comportamento central antes de tentar construir uma super-rede social.</p></div>
+  <div class="checklist">
+    <div class="check">Cadastro e login</div><div class="check">Recuperação de senha</div>
+    <div class="check">Perfil e username</div><div class="check">Modo anônimo</div>
+    <div class="check">Onboarding</div><div class="check">Objetivo da jornada</div>
+    <div class="check">Contador de progresso</div><div class="check">Check-in diário</div>
+    <div class="check">Registro de vontade</div><div class="check">Intensidade 0–10</div>
+    <div class="check">Registro de gatilho</div><div class="check">Intervenções rápidas</div>
+    <div class="check">Histórico de cravings</div><div class="check">Registro de recaída</div>
+    <div class="check">Feed</div><div class="check">Criar post</div>
+    <div class="check">Curtir</div><div class="check">Comentar</div>
+    <div class="check">Seguir usuários</div><div class="check">Perfil público/anônimo</div>
+    <div class="check">Desafios</div><div class="check">Badges</div>
+    <div class="check">Notificações básicas</div><div class="check">Denunciar conteúdo</div>
+    <div class="check">Bloquear usuário</div><div class="check">Configurações de privacidade</div>
+    <div class="check">Biblioteca de conteúdo</div><div class="check">Calculadora financeira</div>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="container">
+  <div class="section-head"><span class="kicker">06 — V2 / V3</span><h2>Escalabilidade do produto.</h2></div>
+  <div class="timeline">
+    <div class="timeline-item"><h3>V1 — Fundação</h3><p class="lead">Jornada + craving + comunidade + gamificação + segurança + conteúdo.</p></div>
+    <div class="timeline-item"><h3>V2 — Personalização</h3><p class="lead">BeyondAI, grupos, mensagens, push notifications, recomendações, desafios adaptativos e estatísticas avançadas.</p></div>
+    <div class="timeline-item"><h3>V3 — Behavioral Engine</h3><p class="lead">Modelos de padrões de gatilho, horários, estratégias eficazes e recomendações personalizadas.</p></div>
+    <div class="timeline-item"><h3>V4 — Pesquisa / Profissionais</h3><p class="lead">Possível integração com profissionais verificados e estudos observacionais/ensaios, seguindo aprovação ética e requisitos legais aplicáveis.</p></div>
+  </div>
+</div>
+</section>
+
+<section id="dados">
+<div class="container">
+  <div class="section-head"><span class="kicker">07 — Banco de dados</span><h2>Modelo proposto para uma futura comunidade.</h2><p class="lead">Estas tabelas descrevem o planejamento da versão multiusuário. A jornada atual guarda os registros no navegador.</p></div>
+  <div class="card">
+<pre>
+profiles
+  id
+  username
+  display_name
+  avatar_url
+  bio
+  is_anonymous
+  created_at
+
+quit_journeys
+  id
+  user_id
+  goal_type
+  start_date
+  target_date
+  status
+  created_at
+
+cravings
+  id
+  user_id
+  intensity_before
+  intensity_after
+  trigger
+  context
+  strategy_used
+  duration_seconds
+  created_at
+
+relapses
+  id
+  user_id
+  trigger
+  context
+  notes
+  created_at
+
+posts
+comments
+likes
+bookmarks
+followers
+blocks
+reports
+
+groups
+group_members
+group_posts
+
+challenges
+challenge_members
+achievements
+user_achievements
+
+notifications
+
+conversations
+conversation_members
+messages
+
+articles
+article_categories
+article_sources
+
+professionals
+professional_verification
+
+moderation_reports
+moderation_actions
+
+analytics_events
+</pre>
+  </div>
+</div>
+</section>
+
+<section id="tech">
+<div class="container">
+  <div class="section-head"><span class="kicker">08 — Tecnologia</span><h2>Como a jornada funciona hoje</h2><p class="lead">Abra o arquivo index.html ou publique a pasta em uma hospedagem estática. As páginas usam HTML, CSS e JavaScript puros, com fontes e imagens locais.</p></div>
+  <div class="grid">
+    <div class="card"><h3>Página inicial</h3><p>Os capítulos educativos usam links de página e uma ilustração em Canvas 2D. A preferência por movimento reduzido ativa a leitura contínua.</p></div>
+    <div class="card"><h3>Registro diário</h3><p>A data de início define o dia da jornada. A pessoa registra as puxadas, conclui o dia e pode reabri-lo para fazer uma correção.</p></div>
+    <div class="card"><h3>Armazenamento local</h3><p>O navegador guarda o cronograma, as anotações pessoais e os parâmetros de estimativa em localStorage. Limpar os dados do site remove esse histórico.</p></div>
+  </div>
+  <div class="callout">
+    <strong>Fluxo de registro</strong>
+    <div class="flow" style="margin-top:15px">
+      <span>jornada.html</span><b>→</b><span>app.js</span><b>→</b><span>journey-store.js</span><b>→</b><span>localStorage</span>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Estimativas de redução e economia</h3>
+    <p>A estimativa de puxadas evitadas compara o consumo total dos dias concluídos com a média anterior informada pela pessoa, multiplicada pelo número desses dias. A economia usa essa diferença, limitada a um mínimo de zero, e o custo por puxada informado pelo preço e pela capacidade do aparelho.</p>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="container">
+  <div class="section-head"><span class="kicker">09 — Privacidade</span><h2>Privacy by Design.</h2><p class="lead">O produto pode lidar com informações relacionadas a hábitos e saúde. A arquitetura deve coletar somente o necessário e dar ao usuário controle sobre seus dados.</p></div>
+  <div class="grid">
+    <div class="card"><h3>🔐 Minimização</h3><p>Evitar coleta de CPF, endereço, localização exata e outros dados sem necessidade funcional.</p></div>
+    <div class="card"><h3>👤 Anonimato</h3><p>Separar identidade da experiência pública sempre que possível.</p></div>
+    <div class="card"><h3>🧱 RLS</h3><p>Aplicar Row Level Security para impedir que usuários acessem registros que não deveriam.</p></div>
+    <div class="card"><h3>🗑️ Controle</h3><p>Excluir conta, excluir conteúdo e oferecer mecanismos de gerenciamento de dados.</p></div>
+    <div class="card"><h3>🛡️ Moderação</h3><p>Bloqueio, denúncia, anti-spam, prevenção de abuso e trilhas administrativas.</p></div>
+    <div class="card"><h3>⚠️ Segurança</h3><p>IA e conteúdos devem ter limites claros. Casos de crise precisam de fluxos de segurança apropriados.</p></div>
+  </div>
+  <div class="callout"><strong>LGPD:</strong> dados pessoais relacionados à saúde possuem proteção especial. O tratamento deve ser planejado desde a concepção do produto, com finalidade, necessidade, segurança e transparência.</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+  <div class="section-head"><span class="kicker">10 — Métricas</span><h2>Medir o que realmente importa.</h2></div>
+  <table>
+    <thead><tr><th>Métrica</th><th>Objetivo</th></tr></thead>
+    <tbody>
+      <tr><td>Craving Resolution Rate</td><td>Percentual de vontades registradas que terminam sem uso.</td></tr>
+      <tr><td>7-day retention</td><td>Entender se a jornada consegue manter usuários ativos.</td></tr>
+      <tr><td>30-day retention</td><td>Medir continuidade de longo prazo.</td></tr>
+      <tr><td>Quit attempts</td><td>Quantidade de tentativas de cessação iniciadas.</td></tr>
+      <tr><td>7/30-day abstinence</td><td>Indicadores comportamentais para acompanhamento, sem alegar eficácia clínica.</td></tr>
+      <tr><td>Cravings resisted</td><td>Quantidade de vontades enfrentadas sem uso.</td></tr>
+      <tr><td>Support interactions</td><td>Quanto a comunidade participa do processo.</td></tr>
+      <tr><td>Daily check-in rate</td><td>Consistência de acompanhamento.</td></tr>
+    </tbody>
+  </table>
+</div>
+</section>
+
+<section>
+<div class="container">
+  <div class="section-head"><span class="kicker">11 — Eventos</span><h2>Analytics comportamental.</h2><p class="lead">Eventos estruturados permitem entender o uso do produto e, futuramente, estudar quais componentes parecem estar associados a melhores resultados.</p></div>
+  <div class="card">
+<pre>
+craving_started
+craving_completed
+craving_resisted
+relapse_registered
+quit_attempt_started
+daily_checkin
+challenge_completed
+support_requested
+support_received
+post_created
+post_liked
+comment_created
+article_opened
+strategy_selected
+notification_opened
+</pre>
+  </div>
+  <div class="callout"><strong>Regra:</strong> analytics devem ser desenhados com privacidade em mente. Dados analíticos não devem ser usados para fazer inferências clínicas indevidas sobre indivíduos.</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+  <div class="section-head"><span class="kicker">12 — UX</span><h2>Mapa de telas.</h2></div>
+  <div class="flow">
+    <span>Landing</span><b>→</b><span>Cadastro</span><b>→</b><span>Onboarding</span><b>→</b><span>Home</span><b>→</b><span>Jornada</span><b>→</b><span>Craving</span><b>→</b><span>Feed</span><b>→</b><span>Comunidade</span><b>→</b><span>Desafios</span><b>→</b><span>Perfil</span><b>→</b><span>Configurações</span>
+  </div>
+  <div class="grid2" style="margin-top:20px">
+    <div class="card"><h3>Home</h3><p>Estado atual, contador, economia, botão de craving, jornada e feed.</p></div>
+    <div class="card"><h3>Craving</h3><p>Fluxo rápido, sem excesso de elementos, desenhado para uso em um momento de alta vontade.</p></div>
+    <div class="card"><h3>Feed</h3><p>Conteúdo social com foco em apoio, progresso e experiências pessoais.</p></div>
+    <div class="card"><h3>Jornada</h3><p>Histórico, gráficos e marcos sem transformar recaídas em fracasso absoluto.</p></div>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="container">
+  <div class="section-head"><span class="kicker">13 — Marca</span><h2>Identidade BeyondVape.</h2></div>
+  <div class="grid">
+    <div class="card"><h3>Cor principal</h3><p><span class="pill">Azul elétrico</span><span class="pill">Azul profundo</span><span class="pill">Branco</span><span class="pill">Preto</span></p><p>Azul comunica tecnologia, confiança, liberdade e evolução sem parecer uma campanha médica tradicional.</p></div>
+    <div class="card"><h3>Personalidade</h3><p>Moderna, acolhedora, forte, discreta, não julgadora e orientada a progresso.</p></div>
+    <div class="card"><h3>Mensagem</h3><p><strong>“Você não precisa vencer sozinho.”</strong><br>O foco está na pessoa e na vida além do vape.</p></div>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="container">
+  <div class="section-head"><span class="kicker">14 — Roadmap</span><h2>Plano de execução.</h2></div>
+  <div class="timeline">
+    <div class="timeline-item"><h3>Fase 1 — Fundação</h3><p class="lead">Design system, autenticação, banco, RLS, estrutura frontend, perfis e onboarding.</p></div>
+    <div class="timeline-item"><h3>Fase 2 — Jornada</h3><p class="lead">Dashboard, contador, check-in, craving protocol, recaídas e métricas básicas.</p></div>
+    <div class="timeline-item"><h3>Fase 3 — Social</h3><p class="lead">Feed, posts, comentários, curtidas, seguir, denúncias e bloqueios.</p></div>
+    <div class="timeline-item"><h3>Fase 4 — Gamificação</h3><p class="lead">Desafios, badges, marcos e reconhecimento de apoio.</p></div>
+    <div class="timeline-item"><h3>Fase 5 — Conteúdo</h3><p class="lead">Biblioteca, fontes, calculadora financeira e conteúdos educativos.</p></div>
+    <div class="timeline-item"><h3>Fase 6 — Inteligência</h3><p class="lead">BeyondAI, personalização, recomendações e Behavioral Engine.</p></div>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="container">
+  <div class="section-head"><span class="kicker">15 — Princípios</span><h2>Regras que não podem ser quebradas.</h2></div>
+  <div class="grid">
+    <div class="card"><h3>Não julgar</h3><p>Recaída não deve transformar o produto em uma máquina de culpa.</p></div>
+    <div class="card"><h3>Não prometer cura</h3><p>O produto é uma ferramenta de apoio e mudança comportamental, não substituto automático de tratamento profissional.</p></div>
+    <div class="card"><h3>Privacidade primeiro</h3><p>Coletar o mínimo necessário e tornar controles compreensíveis.</p></div>
+    <div class="card"><h3>Comunidade segura</h3><p>Combater assédio, promoção de vape, spam e conteúdo prejudicial.</p></div>
+    <div class="card"><h3>Ciência acima de marketing</h3><p>Qualquer alegação de eficácia deve ser sustentada por evidência apropriada.</p></div>
+    <div class="card"><h3>Pessoa acima da sequência</h3><p>O valor do progresso acumulado não desaparece por causa de um evento isolado.</p></div>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="container">
+  <div class="callout">
+    <h3>Resumo executivo</h3>
+    <p>O BeyondVape pode ser construído como uma plataforma web social-first para apoiar pessoas que desejam reduzir ou abandonar o uso de vape. O diferencial está na combinação de <strong>craving support + acompanhamento comportamental + comunidade + gamificação + personalização</strong>.</p>
+    <p>A primeira meta não é criar centenas de funcionalidades. É validar o loop: <strong>registrar → enfrentar → receber apoio → aprender → continuar.</strong></p>
+  </div>
+</div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <strong>BeyondVape</strong> — além do vape.<br>
+    Documento de visão, produto, tecnologia e escopo • 2026
+  </div>
+</footer>
+
+</body>
+</html>

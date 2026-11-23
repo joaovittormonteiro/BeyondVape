@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111317">
+  <meta name="description" content="Entenda os efeitos do vape e acompanhe seu consumo gratuitamente com a jornada de 30 dias do BeyondVape.">
+  <title>BeyondVape — Respire além do vape</title>
+  <link rel="icon" href="beyond-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="landing.css">
+  <script src="landing.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#apoio">Pular para a jornada gratuita</a>
+  <main class="film" id="inicio">
+    <div class="frame">
+      <header class="topbar">
+        <a class="brand" href="#inicio" aria-label="BeyondVape, início">
+          <img src="beyondvape-logo.png" alt="BeyondVape">
+        </a>
+        <nav class="top-links" aria-label="Na página">
+          <a href="#dados">Os dados</a>
+          <a href="#efeitos">Os efeitos</a>
+          <a href="#apoio">A jornada</a>
+        </nav>
+        <a class="button button-outline" href="jornada.html">Abrir jornada <span aria-hidden="true">↗</span></a>
+      </header>
+
+      <figure class="visual" aria-hidden="true">
+        <svg class="optics" viewBox="0 0 600 600" fill="none">
+          <circle cx="300" cy="300" r="234" stroke="currentColor" stroke-opacity=".42"/>
+          <circle cx="300" cy="300" r="201" stroke="currentColor" stroke-opacity=".65" stroke-dasharray="2 8"/>
+          <circle cx="300" cy="300" r="166" stroke="currentColor" stroke-opacity=".23"/>
+          <path d="M300 32v49m0 438v49M32 300h49m438 0h49M118 118l22 22m320 320 22 22m0-364-22 22M140 460l-22 22" stroke="currentColor" stroke-opacity=".52"/>
+          <path d="M300 291v18m-9-9h18" stroke="currentColor" stroke-opacity=".75"/>
+        </svg>
+        <canvas id="pod"></canvas>
+        <figcaption><span class="signal"></span><span id="visual-label">Dispositivo eletrônico</span></figcaption>
+      </figure>
+
+      <div class="chapters">
+        <section class="chapter" id="abertura" data-anchor="inicio" data-label="Dispositivo eletrônico">
+          <h1>Respire além<br>do <em>vape.</em></h1>
+          <p class="lede">Entenda o que você inala. Registre seu consumo e acompanhe a redução ao longo de 30 dias, gratuitamente.</p>
+          <a class="button button-primary" href="jornada.html">Acessar minha jornada <span aria-hidden="true">↗</span></a>
+        </section>
+
+        <section class="chapter" id="dados" data-anchor="dados" data-label="Dispositivo em fragmentação">
+          <p class="kicker"><span></span> Experimentação no Brasil</p>
+          <h2 class="stat">29,6<span>%</span></h2>
+          <p class="lede">dos estudantes de 13 a 17 anos no Brasil já haviam experimentado cigarro eletrônico em 2024.</p>
+          <div class="comparison" aria-label="16,8% em 2019 e 29,6% em 2024">
+            <div><span>2019</span><i style="--bar:56.76%"></i><strong>16,8%</strong></div>
+            <div><span>2024</span><i style="--bar:100%"></i><strong>29,6%</strong></div>
+          </div>
+          <a class="source" href="https://agenciadenoticias.ibge.gov.br/media/com_mediaibge/arquivos/dbff6312ead43646734c2b1f9258b7d9.pdf">Fonte IBGE · PeNSE 2024 (PDF) <span aria-hidden="true">↗</span></a>
+        </section>
+
+        <section class="chapter" id="efeitos" data-anchor="efeitos" data-label="Aerossol · representação visual">
+          <p class="kicker"><span></span> O que chega ao corpo</p>
+          <h2>Por dentro<br>do <em>aerossol.</em></h2>
+          <dl class="effects">
+            <div><dt>Nicotina</dt><dd>Presente na maioria dos vapes, pode causar dependência.</dd></div>
+            <div><dt>Partículas finas</dt><dd>Podem penetrar profundamente nos pulmões.</dd></div>
+            <div><dt>Metais pesados</dt><dd>O aerossol pode conter níquel, estanho e chumbo.</dd></div>
+          </dl>
+          <a class="source" href="https://www.cdc.gov/tobacco/e-cigarettes/about.html">Fonte: CDC <span aria-hidden="true">↗</span></a>
+        </section>
+
+        <section class="chapter" id="dependencia" data-anchor="dependencia" data-label="Ciclo da dependência · representação visual">
+          <p class="kicker"><span></span> Nicotina e abstinência</p>
+          <h2>O ciclo da<br><em>vontade.</em></h2>
+          <p class="lede">Quando quem tem dependência de nicotina para de usar, pode sentir fissura, irritabilidade ou dificuldade para dormir. Esses sintomas tendem a diminuir com o tempo.</p>
+          <a class="source" href="https://www.cdc.gov/tobacco/e-cigarettes/health-effects.html">Fonte: CDC <span aria-hidden="true">↗</span></a>
+        </section>
+
+        <section class="chapter" id="rotina" data-anchor="rotina" data-label="Cronograma de acompanhamento">
+          <p class="kicker"><span></span> Seu registro diário</p>
+          <h2>Veja o que<br><em>mudou.</em></h2>
+          <dl class="effects">
+            <div><dt>Registre</dt><dd>Adicione cada puxada ao contador do dia.</dd></div>
+            <div><dt>Compare</dt><dd>Veja o consumo registrado ao lado da meta diária.</dd></div>
+            <div><dt>Acompanhe</dt><dd>Consulte os registros no cronograma de 30 dias.</dd></div>
+          </dl>
+        </section>
+
+        <section class="chapter" id="apoio" data-anchor="apoio" data-label="BeyondVape · jornada gratuita">
+          <p class="kicker"><span></span> A jornada BeyondVape</p>
+          <h2>Um dia<br>de <em>cada vez.</em></h2>
+          <p class="lede">Registre suas puxadas, acompanhe metas diárias e veja sua evolução em um cronograma de 30 dias. Sem conta e sem custo.</p>
+          <a class="button button-primary" href="jornada.html">Acessar minha jornada <span aria-hidden="true">↗</span></a>
+          <p class="care">Para apoio profissional, <a href="https://www.gov.br/inca/pt-br/assuntos/causas-e-prevencao-do-cancer/tabagismo/como-parar-de-fumar">consulte o atendimento pelo SUS</a>.</p>
+        </section>
+      </div>
+
+      <div class="timeline">
+        <a class="scroll-cue" href="#dados"><span class="scroll-icon" aria-hidden="true">↓</span> <span id="cue-label">Role para explorar</span></a>
+        <nav class="chapter-nav" aria-label="Capítulos">
+          <a href="#inicio" aria-label="Abertura" title="Abertura"></a>
+          <a href="#dados" aria-label="Experimentação no Brasil" title="Experimentação no Brasil"></a>
+          <a href="#efeitos" aria-label="O aerossol" title="O aerossol"></a>
+          <a href="#dependencia" aria-label="Dependência" title="Dependência"></a>
+          <a href="#rotina" aria-label="Registro diário" title="Registro diário"></a>
+          <a href="#apoio" aria-label="A jornada" title="A jornada"></a>
+        </nav>
+        <span class="chapter-index" aria-hidden="true"><b id="chapter-count">01</b> / 06</span>
+      </div>
+    </div>
+    <div class="anchors" aria-hidden="true"></div>
+  </main>
+  <footer class="footer">
+    <span>BeyondVape</span>
+    <span>Ferramenta gratuita de acompanhamento</span>
+    <a href="#inicio">Voltar ao início ↑</a>
+  </footer>
+</body>
+</html>

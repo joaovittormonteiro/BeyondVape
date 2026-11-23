@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111317">
+  <meta name="description" content="Registre suas puxadas, acompanhe as metas dos 30 dias e escreva no seu diário pessoal.">
+  <title>Minha jornada — BeyondVape</title>
+  <link rel="icon" href="beyond-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="journey-store.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <header class="header">
+    <div class="wrap header-inner">
+      <a href="index.html" aria-label="BeyondVape, página inicial"><img class="brand-logo" src="beyondvape-logo.png" alt="BeyondVape"></a>
+      <nav class="nav" aria-label="Navegação da jornada">
+        <a href="#jornada" aria-current="page">Minha jornada</a>
+        <a href="#diario">Diário</a>
+        <a href="#metodo">O método</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" id="conteudo" tabindex="-1">
+    <noscript><p class="notice">Ative o JavaScript no navegador para registrar sua jornada. <a href="index.html">Ler sobre o vape</a></p></noscript>
+    <p class="notice" id="storageNotice" role="status" hidden></p>
+
+    <section id="jornada" aria-labelledby="journeyTitle">
+      <div class="page-heading">
+        <h1 id="journeyTitle" tabindex="-1">Minha jornada</h1>
+        <span id="todayDate" class="date-label"></span>
+      </div>
+
+      <div class="overview">
+        <article class="instrument" aria-labelledby="dayTitle">
+          <div class="instrument-head">
+            <span id="dayDate">Registro diário</span>
+            <div class="day-nav">
+              <button type="button" id="btnPrevDay" aria-label="Dia anterior" disabled>←</button>
+              <button type="button" id="btnNextDay" aria-label="Próximo dia">→</button>
+            </div>
+          </div>
+          <div class="instrument-body">
+            <div class="day-copy">
+              <h2 id="dayTitle" tabindex="-1">Dia 1 <small>de 30</small></h2>
+              <p id="dayMeta">Meta de 30 puxadas</p>
+              <p id="counterRemaining"></p>
+            </div>
+            <div class="dial" id="dial">
+              <div class="dial-face">
+                <strong id="counterVal">0</strong>
+                <span id="counterLabel">puxadas registradas</span>
+              </div>
+            </div>
+          </div>
+          <div class="actions">
+            <button type="button" class="primary" id="btnAddPuff"><span aria-hidden="true">+</span> Registrar puxada</button>
+            <button type="button" class="secondary" id="btnUndoPuff" disabled>Desfazer</button>
+            <button type="button" class="text-btn" id="btnFinishDay">Concluir dia</button>
+          </div>
+        </article>
+
+        <aside class="summary" aria-labelledby="summaryTitle">
+          <h2 id="summaryTitle">Seu progresso</h2>
+          <p>Considera os dias que você concluiu.</p>
+          <dl class="metrics">
+            <div><dt>Dias concluídos</dt><dd id="sumDays">0</dd></div>
+            <div><dt>Dias dentro da meta</dt><dd id="sumDaysSuccess">0</dd></div>
+            <div><dt>Puxadas evitadas <small>(estimativa)</small></dt><dd id="sumPuffsAvoided">—</dd></div>
+            <div><dt>Economia estimada</dt><dd id="sumMoneySaved">—</dd></div>
+          </dl>
+          <button type="button" class="text-btn" id="openSettings">Configurar estimativas</button>
+        </aside>
+      </div>
+
+      <section class="schedule" aria-labelledby="scheduleTitle">
+        <div class="section-head">
+          <div><h2 id="scheduleTitle">Cronograma de 30 dias</h2>
+          <p>Selecione um dia para consultar a meta e o seu registro.</p></div>
+          <button class="secondary" id="btnToday" type="button">Ir para hoje</button>
+        </div>
+        <div class="legend"><span><i class="target-key"></i>Meta de puxadas</span><span><i class="used-key"></i>Consumo registrado</span></div>
+        <div id="daysList" class="chart" aria-label="Dias da jornada"></div>
+      </section>
+
+      <div class="journal-link"><div><h2>Diário da jornada</h2><p>Guarde o que percebeu na sua rotina de hoje.</p></div><a href="#diario">Escrever no diário <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section id="diario" aria-labelledby="diaryTitle" hidden>
+      <div class="page-heading"><h1 id="diaryTitle" tabindex="-1">Meu diário</h1></div>
+      <div class="diary-layout">
+        <form id="noteForm" class="editor">
+          <h2>Nova anotação</h2>
+          <label for="postInput">O que você percebeu hoje?</label>
+          <textarea id="postInput" name="note" rows="5" maxlength="2000" required aria-describedby="notePrivacy"></textarea>
+          <p id="notePrivacy">Suas anotações ficam apenas neste navegador.</p>
+          <button type="submit" class="primary" id="btnSendPost" disabled>Salvar anotação</button>
+        </form>
+        <section class="history" aria-labelledby="historyTitle">
+          <h2 id="historyTitle">Minhas anotações</h2>
+          <p id="emptyNotes">As anotações que você salvar aparecerão aqui.</p>
+          <ol id="postsList"></ol>
+        </section>
+      </div>
+    </section>
+
+    <section id="metodo" class="method" aria-labelledby="methodTitle" hidden>
+      <div class="page-heading"><h1 id="methodTitle" tabindex="-1">O método</h1></div>
+      <div class="method-layout">
+        <div class="method-intro">
+          <h2>Uma jornada de 30 dias</h2>
+          <p>O cronograma começa com uma meta de 30 puxadas e chega a zero no último dia. Use as metas como referência para observar o seu consumo.</p>
+          <p>Registre cada puxada e conclua o dia quando terminar. Você também pode registrar um dia com zero puxadas. Se precisar corrigir algo, reabra o dia no cronograma.</p>
+          <a href="#jornada" class="primary">Ir para minha jornada</a>
+        </div>
+        <ol class="phases">
+          <li><span>Dias 1 a 10</span><h3>Reconhecer a rotina</h3><p>Observe em quais momentos do dia você usa o vape. Anote no diário o que estava fazendo.</p></li>
+          <li><span>Dias 11 a 20</span><h3>Observar os hábitos</h3><p>Compare seus registros com as metas e observe o que facilita ou dificulta a redução.</p></li>
+          <li><span>Dias 21 a 30</span><h3>Revisitar o progresso</h3><p>A meta do último dia é zero. Consulte seu histórico mesmo nos dias em que ultrapassar a meta.</p></li>
+        </ol>
+      </div>
+      <div class="resource"><h2>Apoio profissional</h2><p>Para buscar acompanhamento, <a href="https://www.gov.br/inca/pt-br/assuntos/causas-e-prevencao-do-cancer/tabagismo/como-parar-de-fumar">consulte as orientações do INCA sobre atendimento pelo SUS</a>.</p><a href="index.html#efeitos">Entenda os efeitos do vape</a></div>
+    </section>
+    <p id="announcement" class="sr-only" role="status" aria-live="polite"></p>
+  </main>
+
+  <dialog id="settings" aria-labelledby="settingsTitle">
+    <form id="settingsForm">
+      <h2 id="settingsTitle">Suas estimativas</h2>
+      <p>Compare os dias concluídos com o consumo que você tinha antes da jornada. Preencha o custo e a duração do aparelho para estimar a economia.</p>
+      <label for="baseline">Puxadas por dia antes da jornada</label>
+      <input id="baseline" name="baseline" type="number" min="1" max="100000" step="1" required>
+      <label for="price">Preço por aparelho (R$)</label>
+      <input id="price" name="price" type="number" min="0.01" max="100000" step="0.01">
+      <label for="capacity">Puxadas por aparelho</label>
+      <input id="capacity" name="capacity" type="number" min="1" max="1000000" step="1">
+      <div class="dialog-actions"><button type="button" class="secondary" id="cancelSettings">Cancelar</button><button class="primary" type="submit">Salvar</button></div>
+    </form>
+  </dialog>
+</body>
+</html>
